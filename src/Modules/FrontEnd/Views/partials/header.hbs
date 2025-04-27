@@ -1,0 +1,22 @@
+<div class="container-fluid p-0">
+    <header id="header" class="sticky-top mb-1 mb-0">
+
+        <div class="container-fluid d-grid gap-3 align-items-center border-bottom" style="grid-template-columns: 20px 1fr 2fr;">
+                <a class="d-flex align-items-center text-decoration-none green" onclick="toggleSidebar()"><i class="fas fa-bars"></i></a> 
+                <a href="https://master-coders.com" target="_blank" class="ps-2 green"><h4> master-coders.com</h4></a>
+            <div class="dropdown" style="justify-self: right;">
+
+                <a class="dropdown-toggle text-decoration-none green" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-user"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+                    <li>
+                        <form action="{{ action }}" method="post">
+                        <button class="dropdown-item" type="submit"><i class="fas fa-sign-out-alt"></i>&nbsp;
+                            Cerrar Sesion</button>
+                    </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>

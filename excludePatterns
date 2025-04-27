@@ -1,0 +1,10 @@
+
+**/node_modules
+**/.git
+**/data.json
+**/database/mysql/data/
+
+**.zip
+**.xml
+**/proxy/caddy
+**/proxy/conf

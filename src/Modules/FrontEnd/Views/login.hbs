@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Curso MasterFact</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.00, maximum-scale=3.0, minimum-scale=1.00">
+
+    <link href="/Libraries/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Libraries/fontawesome-5.6.3-web/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/auth.css">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body class="text-center test1">
+<div class="backs-container">
+    <div id="back-1" class="background" style="background-image: url('/img/Home.png'); background-color: rgb(85, 102, 119); transition: opacity 0.05s; background-size: cover;"></div>
+</div>
+
+<div class="login" style="grid-template-rows: 20px 1fr;display: grid;">
+    <p class="text-start" style="margin-left:25px ; font-size:25px"><a href="https://master-coders.com/soluciones/minimarket"  target="_blank">Master Coders SAC</a> &nbsp;<a style="text-decoration:none" href="https://wa.me/51920702346" target="_blank"> <i class="fab fa-whatsapp"></i></a></p>
+    <main class="form-signin">
+        
+        <form name="loginForm" action="{{ action }}" method="post" >
+            <h1 class="text-center">FACTURACIÓN</h1>
+
+            {{> alerts}}
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Usuario" autocomplete="off" required>
+                <label for="username">Usuario</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" autocomplete="current-password" required>
+                <i class="far fa-eye" id="eye" style="position: absolute; top: 38%; right: 4%;"></i>
+                <label for="password">Password</label>
+            </div>
+
+            <button class="w-100 btn btn-lg btn-primary" type="button" onclick="verifyForm(event)">Login</button>
+            
+            <button hidden id="submit" class="w-100 btn btn-lg btn-primary" type="submit" data-bs-toggle="modal" data-bs-target="#chargingModal">Login</button>
+            <button hidden id="closeModal" type="button" class="btn-close" data-bs-dismiss="modal" data-bs-target="#chargingModal" aria-label="Close"></button>
+        </form>
+    </main>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="chargingModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="chargingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered justify-content-center">
+        <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+{{> footer_libs}}
+
+<script>
+
+    function verifyForm(e){
+        var formUsername = document.forms['loginForm']['username'].value;
+        var formPassword = document.forms['loginForm']['password'].value;
+        if(formUsername == ""){
+            showAlerts(dangerAlert, dangerMessage, 'Usuario vacio');
+            return;
+        }
+
+        if(formPassword == ""){
+            showAlerts(dangerAlert, dangerMessage, 'Password vacio');
+            return;
+        }
+
+        document.getElementById('submit').click();
+    }
+
+    eye.addEventListener("click", function(){
+        console.log('click')
+        this.classList.toggle("fa-eye-slash");
+        const type = password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+    })
+
+</script>
+
+{{> end}}
